@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Quiz App</title>
+  </head>
+  <body> 
+    <div class="container">
+      <div class="start-screen">
+        <main class="main">
+        <header class="header">
+          <a href="index.html" class="logo">Quiz</a>
+        <nav class="navbar">
+          <a class="active">Home</a>
+          <a href="javascript:void(0)" class="nav-btn" id="galleryBtn" onclick="toggleGallery()">Gallery</a>
+          <a href="javascript:void(1)" class="nav-btn2" id="contactBtn" onclick="toggleContact()">Career</a>
+          <a href="javascript:void(1)" class="nav-btn3" id="contact2Btn" onclick="toggleContact2()">Contact</a>
+          <a href="javascript:void(1)" class="nav-btn4" id="contact3Btn" onclick="toggleContact3()">Rate</a>
+          <a href="javascript:void(1)" class="nav-btn5" id="contact4Btn" onclick="toggleContact5()">About</a>
+
+        </nav>
+        </header>
+        </main>
+        <h1 class="heading">Quiz App</h1>
+        <div class="settings">
+          <label for="num-questions">Number of Questions:</label>
+          <select id="num-questions">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="20">30</option>
+            <option value="20">40</option>
+            <option value="20">50</option>
+          </select>
+          <label for="category">Select Category:</label>
+          <select id="category">
+            <option value="">any category</option>
+            <option value="9">general knowledge</option>
+            <option value="10">books</option>
+            <option value="11">films</option>
+            <option value="12">music</option>
+            <option value="14">television</option>
+            <option value="15">video games</option>
+            <option value="16">board games</option>
+            <option value="17">science and nature</option>
+            <option value="18">computers</option>
+            <option value="19">mathematics</option>
+            <option value="20">mythology</option>
+            <option value="21">sports</option>
+            <option value="22">geography</option>
+            <option value="23">history</option>
+            <option value="24">politics</option>
+            <option value="25">art</option>
+            <option value="28">vehicles</option>
+          </select>
+          <label for="difficulty">Select difficulty:</label>
+          <select id="difficulty">
+            <option value="">any difficulty</option>
+            <option value="easy">easy</option>
+            <option value="medium">medium</option>
+            <option value="hard">hard</option>
+          </select>
+          <label for="time">Select time per question:</label>
+          <select id="time">
+            <option value="10">10 seconds</option>
+            <option value="15">15 seconds</option>
+            <option value="20">20 seconds</option>
+            <option value="25">25 seconds</option>
+            <option value="30">30 seconds</option>
+            <option value="60">60 seconds</option>
+          </select>
+        </div>
+        <button class="btn start">Start Quiz</button>
+      </div>
+      <div class="quiz hide">
+        <div class="timer">
+          <div class="progress">
+            <div class="progress-bar"></div>
+            <span class="progress-text"></span>
+          </div>
+        </div>
+        <div class="question-wrapper">
+          <div class="number">
+            Question <span class="current">1</span>
+            <span class="total">/10</span>
+          </div>
+          <div class="question">This is a question This is a question?</div>
+        </div>
+        <div class="answer-wrapper">
+          <div class="answer selected">
+            <span class="text">answer</span>
+            <span class="checkbox">
+              <i class="fas fa-check"></i>
+            </span>
+          </div>
+        </div>
+        <button class="btn submit" disabled>Submit</button>
+        <button class="btn next">Next</button>
+      </div>
+      <div class="end-screen hide">
+        <h1 class="heading">Quiz App</h1>
+        <div class="score">
+          <span class="score-text">Your score:</span>
+          <div>
+            <span class="final-score">0</span>
+            <span class="total-score">/10</span>
+          </div>
+        </div>
+        <button class="btn restart">Back to Home</button>
+      </div>
+    </div>
+    <!-- Gallery View (hidden by default) -->
+    <div id="fullScreenGallery" class="full-screen-gallery" style="display: none;">
+      <span id="closeGallery" onclick="toggleGallery()">X</span>
+      <div class="gallery-images">
+        <h1 style="color:white;">Offline</h1>
+        <p>
+          <img src="https://www.stjohnsledhupur.com/wp-content/gallery/quiz/DSC00521.JPG?text=Science+Quiz+Large" alt="Science Quiz">
+          <img src="https://www.thepresidiumschool.com/news_image/0klvpres-gk-quiz-2019-0001.jpg" alt="Sports Quiz">
+          <img src="https://www.thepresidiumschool.com/news_image/8PRE-PB-QUIZ-COMP-2022-0009.jpg">
+          <img src="https://assets.quizgecko.com/cdn-cgi/image/width=700,quality=90,format=webp/meta-images/jDH1DA3zro3sjRtZqrIdnDtLPWfkQkqXnMNBkMDz.png">
+        <h1 style="color:white;">Awards/rewards</h1>
+        <p>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDZGD7y5rZBnpp8KB1vIrByZb5pMivZb0IUA&s" alt="Math Quiz">
+          <img src="https://www.pushpalataschools.com/pms/wp-content/uploads/2022/04/n2.jpg">
+          <img src="https://hindustanschools.in/wp-content/gallery/intra-school-quiz-competition-2019/intraquiz_competition_his_28.jpg">
+          <img src="https://i.etsystatic.com/31851662/r/il/4ae131/3778028333/il_570xN.3778028333_ndq9.jpg">
+        <h1 style="color:white;">Online</h1>
+          <p>
+          <img src="https://images.prismic.io/edapp-website/NzZmYTljYzktYTNmMS00YTM2LThhZjgtOTBlY2MwM2Y0ZWY0_online_quiz_platforms_-_edapp.png?auto=format,compress" alt="History Quiz">
+          <img src="https://www.dragnsurvey.com/blog/en/wp-content/uploads/2024/03/online-quiz-learner-training.jpg" alt="Geography Quiz">
+          <img src="https://images.prismic.io/edapp-website/ZnzhR5bWFbowe7gR_QuizzesCoverpagecopy.jpg?auto=format%2Ccompress&rect=17%2C0%2C3566%2C1863&w=768&h=627&q=15" alt="Art Quiz">
+          <img src="https://bigsondev.com/static/9d390e18ed598ecabd85d9d8c56461a9/ee604/quiz-app.png">
+          <img src="https://apolearn.com/wp-content/uploads/2023/09/young-female-college-student-think-background-beautiful-student.jpg">
+          <img src="https://cdn1.vectorstock.com/i/1000x1000/31/00/student-chooses-correct-answer-in-test-online-quiz-vector-48283100.jpg">
+      </div>
+  </div>
+
+  <!-- Gallery View (hidden by default) -->
+  <div id="fullScreenGallery2" class="full-screen-gallery2" style="display: none;">
+    <span id="closeGallery" onclick="toggleContact()">X</span>
+    <div class="contact-images">
+      <div id="overlay" class="overlay"></div> 
+
+      <!-- Career Page -->
+      <div id="careerPage" class="page">
+          <h1>Job Opportunities</h1>
+          
+          <!-- Job 1 -->
+          <div class="job-notification">
+              <img src="https://img.freepik.com/premium-vector/word-cloud-background-concept-software-engineering-computer-programming-system-cloud-technology-development-application-management-vector-illustration_616200-4829.jpg?semt=ais_hybrid" alt="Software Engineer">
+              <div class="job-details">
+                  <h3>Software Engineer</h3>
+                  <p>Location: 📍Warangal</p>
+                  <p>Salary: $80,000 - $100,000 per year</p>
+                  <p>Join our dynamic team and help build innovative software solutions!</p>
+              </div>
+              <button class="apply-btn" data-job="Software Engineer">Apply for Job</button>
+          </div>
+  
+          <!-- Job 2 -->
+          <div class="job-notification">
+              <img src="https://www.simplilearn.com/ice9/free_resources_article_thumb/how_to_become_a_data_scientist.jpg" alt="Data Scientist">
+              <div class="job-details">
+                  <h3>Data Scientist</h3>
+                  <p>Location: 📍Hyderabad</p>
+                  <p>Salary: $100,000 - $120,000 per mnth</p>
+                  <p>Work with large data sets to uncover insights and drive decisions.</p>
+              </div>
+              <button class="apply-btn" data-job="Data Scientist">Apply for Job</button>
+          </div>
+  
+          <!-- Job 3 -->
+          <div class="job-notification">
+              <img src="https://i0.wp.com/theroxanneperspective.com/wp-content/uploads/2023/07/8459814.jpg?resize=800%2C800&ssl=1" alt="UX/UI Designer">
+              <div class="job-details">
+                  <h3>UX/UI Designer</h3>
+                  <p>Location: Remote</p>
+                  <p>Salary: $70,000 - $90,000 per year</p>
+                  <p>Design user-friendly interfaces for our cutting-edge products.</p>
+              </div>
+              <button class="apply-btn" data-job="UX/UI Designer">Apply for Job</button>
+          </div>
+
+          <!-- Job 4 -->
+          <div class="job-notification">
+            <img src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/159611409/original/354c5fe31a70190fb3ef34bd660f5752012a4ccb/be-your-professional-software-test-engineer.jpg" alt="UX/UI Designer">
+            <div class="job-details">
+                <h3>Senior Software test Engineer for Apps</h3>
+                <p>Location: 📍Hyderabad</p>
+                <p>Salary: $90,000 - $150,000 per year</p>
+                <p>Design user-friendly and Updated interfaces for our App.</p>
+            </div>
+            <button class="apply-btn" data-job="UX/UI Designer">Apply for Job</button>
+        </div>
+
+        <!-- Job 5 -->
+        <div class="job-notification">
+            <img src="https://www.simplilearn.com/ice9/free_resources_article_thumb/How_To_Become_A_Content_Writer.jpg" alt="UX/UI Designer">
+            <div class="job-details">
+                <h3>Content Writer  </h3>
+                <p>Location: Remote</p>
+                <p>Salary: $70,000 - $90,000 per year</p>
+                <p>Design informative and user friendly Content for the App user.</p>
+            </div>
+            <button class="apply-btn" data-job="UX/UI Designer">Apply for Job</button>
+        </div>
+
+        <!-- Job 6 -->
+        <div class="job-notification">
+            <img src="https://www.sciencebuddies.org/WdTLQtJ3Y_eXfwAqRO5_5KT46aI=/640x480/-/https/careerdiscovery.sciencebuddies.org/cdn/Files/18382/4/film-editor.jpg" alt="UX/UI Designer">
+            <div class="job-details">
+                <h3>Editor</h3>
+                <p>Location: Remote</p>
+                <p>Salary: $70,000 - $90,000 per year</p>
+                <p>Editing and updating the App Content.</p>
+            </div>
+            <button class="apply-btn" data-job="UX/UI Designer">Apply for Job</button>
+        </div>
+
+        <!-- Job 7 -->
+        <div class="job-notification">
+            <img src="https://www.simplilearn.com/ice9/free_resources_article_thumb/web_developerskills.jpg" alt="UX/UI Designer">
+            <div class="job-details">
+                <h3>Web Developer</h3>
+                <p>Location: 📍Hyderabad</p>
+                <p>Salary: $100,000 - $120,000 per year</p>
+                <p>Create and maintain websites and web applications.</p>
+            </div>
+            <button class="apply-btn" data-job="UX/UI Designer">Apply for Job</button>
+        </div>
+
+        <!-- Job 8 -->
+        <div class="job-notification">
+            <img src="https://media.istockphoto.com/id/1366724877/photo/rear-view-of-mature-teacher-talking-to-his-student-during-lecture-at-university-classroom.jpg?s=612x612&w=0&k=20&c=PYpAFHxiUKX2i1D8w_ElnGsm1B64GBleyF-DfYTLcN0=" alt="UX/UI Designer">
+            <div class="job-details">
+                <h3>Professor</h3>
+                <p>Location: 📍Hyderabad</p>
+                <p>Salary: $70,000 - $90,000 per year</p>
+                <p>Create assessments and quiz Content for students.</p>
+            </div>
+            <button class="apply-btn" data-job="UX/UI Designer">Apply for Job</button>
+        </div>
+
+  
+          <!-- User Details Form -->
+          <div id="formContainer" class="form-container">
+              <h3>Apply for <span id="jobTitle"></span></h3>
+              <label for="name">Full Name:</label>
+              <input type="text" id="name" placeholder="Enter your full name" required>
+              <label for="email">Email Address:</label>
+              <input type="email" id="email" placeholder="Enter your email address" required>
+              <button id="submitBtn" class="submit-btn">Submit</button>
+          </div>
+  
+          <!-- Thank You Message -->
+          <div id="thankYouMessage" class="thank-you-message">
+              <p>Thank you for applying! We will get back to you soon.</p>
+          </div>
+      </div>
+  
+    </div>
+</div>
+
+
+
+<!-- Contact -->
+<div id="fullScreenGallery3" class="full-screen-gallery3" style="display: none;">
+  <span id="closeGallery" onclick="toggleContact2()">X</span>
+  <div class="gallery-images">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <div class="contact-info" id="contactInfo">
+          <h2>Our Address</h2>
+          <p><strong>Company Name:</strong> Quiz App</p>
+          <p><strong>Email:</strong> <a href="QuizApp@App.com">QuizApp@App.com</a></p>
+          <p><strong>Phone:</strong> 9392561932(Vishnu Vardhan - Founder)</p>
+          <p><strong>Phone:</strong> 7893778899(Harini - Co Founder)</p>
+          <p><strong>Working Hours:</strong> Mon-Fri, 9:00 AM - 5:00 PM</p>
+      </div>
+
+      <form id="contactForm">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Your email" required>
+
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="Subject" required>
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+
+          <button type="submit">Send Message</button>
+      </form>
+
+      <div class="thank-you-message2" id="thankYouMessage2">
+          Thank you, <span id="userName"></span>, for reaching out to us. We'll get back to you soon!
+      </div>
+  </div>
+  </div>
+</div>
+
+
+
+<!-- rate -->
+<div id="fullScreenGallery4" class="full-screen-gallery4" style="display: none;">
+  <span id="closeGallery" onclick="toggleContact3()">X</span>
+  <div class="gallery-images">
+    <div id="rating-container">
+      <h1 id="page-title">Rate Our Service</h1>
+      <div id="rating-stars">
+          <span class="star" id="star-1" data-value="1">★</span>
+          <span class="star" id="star-2" data-value="2">★</span>
+          <span class="star" id="star-3" data-value="3">★</span>
+          <span class="star" id="star-4" data-value="4">★</span>
+          <span class="star" id="star-5" data-value="5">★</span>
+      </div>
+      <textarea id="comment-box" placeholder="Leave your comments here..."></textarea>
+      <button id="submit-button">Submit Rating</button>
+      <div id="thank-you-message">
+          Thank you for your feedback! You rated us <span id="user-rating"></span> stars.
+      </div>
+  </div>
+  </div>
+</div>
+
+
+
+<!-- Event -->
+<div id="fullScreenGallery5" class="full-screen-gallery5" style="display: none;">
+  <span id="closeGallery" onclick="toggleContact4()">Back</span>
+  <div class="gallery-images">
+    <div class="container">
+      <h2>Upcoming Quiz Competitions</h2>
+      <div id="event-list" class="event-list">
+          <!-- Events will be dynamically loaded here -->
+      </div>
+      <div id="confirmation-message"></div>
+  </div>
+
+  <!-- Application Modal -->
+  <div id="application-modal" class="application-modal">
+      <div class="modal-content">
+          <h3>Apply for Event</h3>
+          <form id="application-form">
+              <input type="text" id="student-name" class="student-name" placeholder="Enter your name" required>
+              <input type="email" id="student-email" class="student-email" placeholder="Enter your email" required>
+              <input type="tel" id="student-phone" class="student-phone" placeholder="Enter your phone number" required>
+              <button type="submit" id="submit-application" class="submit-application">Submit Application</button>
+          </form>
+      </div>
+  </div>
+  </div>
+</div>
+
+<!-- Profile -->
+<div id="fullScreenGallery6" class="full-screen-gallery6" style="display: none;">
+  <span id="closeGallery" onclick="toggleContact5()">Back</span>
+  <div class="gallery-images">
+    <header id="header">
+        <h1>About Us</h1>
+    </header>
+    <div id="about" class="content">
+        <h2 class="title">Who We Are</h2>
+        <p>Welcome to <strong>QuizApp</strong> – the ultimate platform for quiz enthusiasts! Our mission is to combine fun with education by delivering a wide variety of quizzes across multiple topics, from general knowledge to niche subjects.</p><b>We -- Vishnu Vardhan and Harini</b> students of SR University
+    </div>
+    <div id="mission" class="content">
+        <h2 class="title">Our Mission</h2>
+        <p>Our mission is to make learning engaging and accessible to everyone. Whether you're brushing up on your skills, preparing for a challenge, or just having fun with friends, QuizApp is here to elevate your experience.</p>
+    </div>
+    <div id="why-quizapp" class="content">
+        <h2 class="title">Why QuizApp?</h2>
+        <ul>
+            <li>Wide range of quiz categories to suit every interest.</li>
+            <li>Interactive and user-friendly design for all age groups.</li>
+            <li>Real-time leaderboards to ignite your competitive spirit.</li>
+            <li>Customizable quizzes for groups, events, and classrooms.</li>
+        </ul>
+    </div>
+    <div id="story" class="content">
+        <h2 class="title">Our Story</h2>
+        <p>QuizApp was founded by a group of two students who believed that learning should be both entertaining and challenging. What started as a small project for friends has now evolved into a global community of curious minds and learners.</p>
+    </div>
+    <footer id="footer">
+        <p>&copy; 2024 QuizApp. All rights reserved.</p>
+    </footer>
+  </div>
+</div>
+
+
+
+
+
+  <script>
+    function toggleGallery() {
+        const gallery = document.getElementById('fullScreenGallery');
+        const mainContent = document.getElementById('mainContent');
+        if (gallery.style.display === "none") {
+            gallery.style.display = "block";
+            mainContent.style.display = "none";  
+        } else {
+            gallery.style.display = "none";
+            mainContent.style.display = "block";  
+        }
+    }
+
+    function toggleContact() {
+        const gallery = document.getElementById('fullScreenGallery2');
+        const mainContent = document.getElementById('mainContent');
+        if (gallery.style.display === "none") {
+            gallery.style.display = "block";
+            mainContent.style.display = "none";  
+        } else {
+            gallery.style.display = "none";
+            mainContent.style.display = "block";  
+        }
+    }
+    
+    (() => {
+    // Wait until DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        const applyButtons = document.querySelectorAll('.apply-btn');
+        const formContainer = document.getElementById('formContainer');
+        const jobTitle = document.getElementById('jobTitle');
+        const submitBtn = document.getElementById('submitBtn');
+        const thankYouMessage = document.getElementById('thankYouMessage');
+        const overlay = document.getElementById('overlay');
+
+        // Ensure elements exist before adding event listeners
+        if (!formContainer || !overlay || !submitBtn || !thankYouMessage || !jobTitle) {
+            console.warn("Required elements are missing from the DOM. Script aborted.");
+            return;
+        }
+
+        // Handle Apply for Job Buttons
+        applyButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const selectedJob = button.getAttribute('data-job');
+                if (selectedJob) {
+                    jobTitle.textContent = selectedJob;
+                    formContainer.style.display = 'block';
+                    overlay.style.display = 'block';
+                }
+            });
+        });
+
+        // Handle Form Submission
+        submitBtn.addEventListener('click', () => {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            if (name && email) {
+                formContainer.style.display = 'none';
+                thankYouMessage.style.display = 'block';
+                overlay.style.display = 'none';
+            } else {
+                alert("Please fill in all fields!");
+            }
+        });
+
+        // Close form when clicking the overlay
+        overlay.addEventListener('click', () => {
+            formContainer.style.display = 'none';
+            overlay.style.display = 'none';
+        });
+    });
+})();
+
+// contact
+
+function toggleContact2() {
+        const gallery = document.getElementById('fullScreenGallery3');
+        const mainContent = document.getElementById('mainContent');
+        if (gallery.style.display === "none") {
+            gallery.style.display = "block";
+            mainContent.style.display = "none";  
+        } else {
+            gallery.style.display = "none";
+            mainContent.style.display = "block";  
+        }
+    }
+
+
+    // Rate
+
+function toggleContact3() {
+        const gallery = document.getElementById('fullScreenGallery4');
+        const mainContent = document.getElementById('mainContent');
+        if (gallery.style.display === "none") {
+            gallery.style.display = "block";
+            mainContent.style.display = "none";  
+        } else {
+            gallery.style.display = "none";
+            mainContent.style.display = "block";  
+        }
+    }
+
+
+
+    function toggleContact4() {
+        const gallery = document.getElementById('fullScreenGallery5');
+        const mainContent = document.getElementById('mainContent');
+        if (gallery.style.display === "none") {
+            gallery.style.display = "block";
+            mainContent.style.display = "none";  
+        } else {
+            gallery.style.display = "none";
+            mainContent.style.display = "block";  
+        }
+    }
+
+
+    function toggleContact5() {
+        const gallery = document.getElementById('fullScreenGallery6');
+        const mainContent = document.getElementById('mainContent');
+        if (gallery.style.display === "none") {
+            gallery.style.display = "block";
+            mainContent.style.display = "none";  
+        } else {
+            gallery.style.display = "none";
+            mainContent.style.display = "block";  
+        }
+    }
+
+
+    // contact
+
+    const form = document.getElementById('contactForm');
+        const thankYouMessage = document.getElementById('thankYouMessage2');
+        const contactInfo = document.getElementById('contactInfo');
+        const userName = document.getElementById('userName');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Retrieve user's name
+            const name = document.getElementById('name').value;
+
+            // Show thank-you message
+            userName.textContent = name;
+            thankYouMessage.style.display = 'block';
+
+            // Hide the form and contact information
+            form.style.display = 'none';
+            contactInfo.style.display = 'none';
+        });
+
+        // Rating
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+    const stars = document.querySelectorAll('.star');
+    const submitButton = document.getElementById('submit-button');
+    const thankYouMessage = document.getElementById('thank-you-message');
+    const userRating = document.getElementById('user-rating');
+    const commentBox = document.getElementById('comment-box');
+    const ratingStars = document.getElementById('rating-stars');
+    let selectedRating = 0;
+
+    stars.forEach(star => {
+        star.addEventListener('click', function () {
+            selectedRating = this.getAttribute('data-value');
+            stars.forEach(s => s.classList.remove('active'));
+            for (let i = 0; i < selectedRating; i++) {
+                stars[i].classList.add('active');
+            }
+        });
+    });
+
+    submitButton.addEventListener('click', function () {
+        if (selectedRating === 0) {
+            alert('Please select a rating before submitting.');
+            return;
+        }
+
+        // Hide the rating interface and show the thank-you message
+        ratingStars.style.display = 'none';
+        commentBox.style.display = 'none';
+        submitButton.style.display = 'none';
+        thankYouMessage.style.display = 'block';
+
+        // Display the user's rating
+        userRating.textContent = selectedRating;
+    });
+});
+
+
+// Events
+const upcomingEvents = [
+            {
+                id: 1,
+                title: "National Science Quiz",
+                place: "📍Hyderabad",
+                date: "2024-12-05",
+                time: "10:00 AM-12:00 PM",
+                awards: "Trophy and $5000",
+                image: "https://img.freepik.com/free-vector/colorful-science-objects-icons-vector-set_1308-140707.jpg?semt=ais_hybrid" // Placeholder image URL
+            },
+            {
+                id: 2,
+                title: "Tech Trivia Challenge",
+                place: "Online",
+                date: "2024-12-12",
+                time: "2:00 PM",
+                awards: "Laptop and $3000",
+                image: "https://i.ytimg.com/vi/XsNYBxng7ls/sddefault.jpg" // Placeholder image URL
+            },
+            {
+                id: 3,
+                title: "History Buff Quiz",
+                place: "📍Hanmakonda",
+                date: "2024-12-20",
+                time: "11:00 AM",
+                awards: "Medal and $2000",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnSrMmsw5sF72gSQKRQirkTyC5_Ac8vKMbeA&s" // Placeholder image URL
+            },
+            {
+                id: 4,
+                title: "Math Quiz -- Math day special",
+                place: "Online",
+                date: "2024-12-22",
+                time: "11:00 AM-1:00PM",
+                awards: "Medal and $2000",
+                image: "https://i.pinimg.com/736x/dc/2c/48/dc2c482294100808cced408abb9cdf7d.jpg" // Placeholder image URL
+            },
+            {
+                id: 5,
+                title: "Geography - World Quiz",
+                place: "📍Hyderabad",
+                date: "2024-12-20",
+                time: "11:00 AM",
+                awards: "Medal and $2000",
+                image: "https://hips.hearstapps.com/hmg-prod/images/geography-quiz-lead-649475e31ec54.jpg?crop=0.5023255813953489xw:1xh;center,top&resize=640:*" // Placeholder image URL
+            },
+        ];
+
+        const eventList = document.getElementById('event-list');
+        const confirmationMessage = document.getElementById('confirmation-message');
+        const applicationModal = document.getElementById('application-modal');
+        const applicationForm = document.getElementById('application-form');
+        const studentName = document.getElementById('student-name');
+        const studentEmail = document.getElementById('student-email');
+        const studentPhone = document.getElementById('student-phone');
+        const submitButton = document.getElementById('submit-application');
+
+        let selectedEvent = null;
+
+        // Load upcoming events
+        function loadUpcomingEvents() {
+            const currentDate = new Date();
+            eventList.innerHTML = '';
+            upcomingEvents.forEach(event => {
+                const eventDate = new Date(event.date);
+                if (eventDate >= currentDate) {
+                    const eventCard = document.createElement('div');
+                    eventCard.classList.add('event-card');
+                    eventCard.setAttribute('id', `event-${event.id}`);
+
+                    eventCard.innerHTML = `
+                        <img src="${event.image}" alt="${event.title}" id="event-image-${event.id}">
+                        <div>
+                            <h3 id="event-title-${event.id}">${event.title}</h3>
+                            <p id="event-place-${event.id}"><strong>Place:</strong> ${event.place}</p>
+                            <p id="event-date-${event.id}"><strong>Date:</strong> ${event.date} | <strong>Time:</strong> ${event.time}</p>
+                            <p id="event-awards-${event.id}"><strong>Awards:</strong> ${event.awards}</p>
+                            <button class="apply-button" id="apply-button-${event.id}" data-event-id="${event.id}">Apply</button>
+                        </div>
+                    `;
+                    eventList.appendChild(eventCard);
+                }
+            });
+
+            document.querySelectorAll('.apply-button').forEach(button => {
+                button.addEventListener('click', openApplicationModal);
+            });
+        }
+
+        // Open application modal
+        function openApplicationModal(e) {
+            const eventId = e.target.getAttribute('data-event-id');
+            selectedEvent = upcomingEvents.find(event => event.id == eventId);
+            applicationModal.style.display = 'flex';
+        }
+
+        // Handle application submission
+        applicationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            confirmationMessage.textContent = `Thank you ${studentName.value}! You have successfully applied for "${selectedEvent.title}" at ${selectedEvent.place}.`;
+            confirmationMessage.style.display = 'block';
+            applicationModal.style.display = 'none';
+            applicationForm.reset();
+        });
+
+        // Initial load
+        loadUpcomingEvents();
+
+</script>
+    <script src="script.js"></script>
+  </body>
+</html>
